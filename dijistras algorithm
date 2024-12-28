@@ -1,0 +1,103 @@
+#include <iostream>
+#include <climits>
+using namespace std;
+
+class Dijkstra {
+public:
+    int **cost;  // Cost matrix representing the graph
+    int *dist;   // Array to store the shortest distance from source to each vertex
+    int *path;   // Array to store the path (previous node) for each vertex
+    int *visited; // Array to mark visited vertices
+    int v;        // Number of vertices
+
+    void read_cost();
+    void initiate(int* arr, int n);
+    void shortest_path(int src);
+    void print_path(int src);
+};
+
+void Dijkstra::read_cost() {
+    cout << "Enter the cost matrix:\n";
+    for (int i = 0; i < v; i++) {
+        for (int j = 0; j < v; j++) {
+            cin >> cost[i][j];
+            if (cost[i][j] == 0 && i != j) {
+                cost[i][j] = INT_MAX; // Set unreachable paths to infinity
+            }
+        }
+    }
+}
+
+void Dijkstra::initiate(int* arr, int n) {
+    for (int i = 0; i < n; i++) {
+        arr[i] = 0; // Initialize array with 0s
+    }
+}
+
+void Dijkstra::shortest_path(int src) {
+    for (int i = 0; i < v; i++) {
+        dist[i] = INT_MAX;
+        visited[i] = 0;
+        path[i] = -1;
+    }
+    dist[src] = 0;
+
+    for (int count = 0; count < v - 1; count++) {
+        int min_dist = INT_MAX, u;
+        for (int i = 0; i < v; i++) {
+            if (!visited[i] && dist[i] < min_dist) {
+                min_dist = dist[i];
+                u = i;
+            }
+        }
+        visited[u] = 1;
+
+        for (int i = 0; i < v; i++) {
+            if (!visited[i] && cost[u][i] != INT_MAX && dist[u] != INT_MAX && dist[u] + cost[u][i] < dist[i]) {
+                dist[i] = dist[u] + cost[u][i];
+                path[i] = u;
+            }
+        }
+    }
+}
+
+void Dijkstra::print_path(int src) {
+    cout << "Vertex\tDistance from Source\tPath" << endl;
+    for (int i = 0; i < v; i++) {
+        cout << i << "\t" << dist[i] << "\t\t";
+
+        int temp = i;
+        while (temp != -1 && temp != src) {
+            cout << temp << " <- ";
+            temp = path[temp];
+        }
+        if (i != src) cout << src;
+        cout << endl;
+    }
+}
+
+int main() {
+    Dijkstra d;
+
+    cout << "Enter the number of vertices: ";
+    cin >> d.v;
+
+    d.cost = new int*[d.v];
+    for (int i = 0; i < d.v; i++) {
+        d.cost[i] = new int[d.v];
+    }
+    
+    d.dist = new int[d.v];
+    d.path = new int[d.v];
+    d.visited = new int[d.v];
+
+    d.read_cost();
+    int src;
+    cout << "Enter the source vertex: ";
+    cin >> src;
+
+    d.shortest_path(src);
+    d.print_path(src);
+
+    // Free dynamically allocated memory
+    for
