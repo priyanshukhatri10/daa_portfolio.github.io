@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Business Case: Agriculture - Irrigation Supply</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #2e3b4e;
+            color: #eaecee;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #1abc9c;
+            padding: 20px;
+            text-align: center;
+        }
+        h1 {
+            font-size: 2.5rem;
+            color: #fff;
+        }
+        h2, h3 {
+            color: #f39c12;
+        }
+        h2 {
+            margin-top: 20px;
+        }
+        p, table {
+            font-size: 1rem;
+            line-height: 1.6;
+            margin: 20px;
+        }
+        table {
+            width: 80%;
+            margin: 20px auto;
+            border-collapse: collapse;
+            background-color: #34495e;
+        }
+        table th, table td {
+            padding: 12px;
+            text-align: left;
+            border: 1px solid #ecf0f1;
+        }
+        table th {
+            background-color: #d35400;
+            color: #fff;
+        }
+        table caption {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #eaecee;
+            margin-bottom: 10px;
+        }
+        a {
+            color: #1abc9c;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        .content-section {
+            margin: 20px;
+        }
+        .content-section h3 {
+            margin-top: 10px;
+            font-size: 1.5rem;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Business Case: Agriculture</h1>
+</header>
+
+<section class="content-section">
+    <h2>Subtask - Irrigation Supply</h2>
+    <h3>SDG Goal: 11</h3>
+    <p><strong>Target:</strong> 11.5</p>
+    <p><strong>Indicator:</strong> 11.5.2</p>
+
+    <h3>Overview</h3>
+    <p>
+        The numbers below represent the key components of Shymora's irrigation system. The dam serves as the primary water source, 
+        while the three reservoirs store and regulate water for efficient distribution. The seven farmlands rely on this irrigation network 
+        to ensure optimal water supply for agriculture, supporting Shymora's vision of sustainable urban-rural integration. 
+        These infrastructures are strategically connected to promote water-use efficiency and enhance agricultural productivity. The cost or weight gives the distance between each infrastructure in kilometers.
+    </p>
+
+    <table>
+        <caption>Agriculture Irrigation System: Infrastructure Overview</caption>
+        <tr>
+            <th>Infrastructure</th>
+            <th>Numbers</th>
+        </tr>
+        <tr>
+            <td><strong>Dam</strong></td>
+            <td>1</td>
+        </tr>
+        <tr>
+            <td><strong>Reservoirs</strong></td>
+            <td>3</td>
+        </tr>
+        <tr>
+            <td><strong>Farmlands</strong></td>
+            <td>7</td>
+        </tr>
+    </table>
+
+    <h3>Fig 1: Irrigation Network Map</h3>
+    <p>An optimal irrigation plan is prepared for Shymora using Dijkstra's algorithm, which provides the shortest path distance for water distribution 
+        across the irrigation network. 
+        <a href="LINK_TO_DIJKSTRAS_CODE" target="_blank">HERE</a> (provide link to Dijkstra's code). 
+        The code is implemented using a Heap data structure, and its efficiency is O(E log V). The algorithm uses the greedy technique, ensuring 
+        that water distribution to farmlands is both efficient and cost-effective. This case study demonstrates the practical application of Dijkstra's 
+        algorithm in optimizing water distribution networks for agricultural purposes.
+    </p>
+</section>
+
+<section class="content-section">
+    <h2>Subtask 2 - Resource Allocation</h2>
+    <h3>SDG Goal: 11</h3>
+    <p><strong>Target:</strong> 11.4</p>
+    <p><strong>Indicator:</strong> 11.4.1</p>
+    <p>
+        In the context of our city Shymora, which is a valley followed by mountain terrains where terrace farming is being done. Terrace farming requires efficient resource allocation. If you have a limited supply of water or fertilizer, it’s important to prioritize the most critical terraces.
+        
+        To solve this, we will assign a priority for each terrace based on factors like water usage, crop growth stage, or soil fertility. Then, allocate the available resources starting with the highest priority.
+        
+        To implement this, we will use a max heap or min-heap to select which terrace should receive resources first based on priority.
+    </p>
+</section>
+
+<section class="content-section">
+    <h2>Subtask 3 - Sorting Terrace Zones by Soil Quality</h2>
+    <h3>SDG Goal: 11</h3>
+    <p><strong>Target:</strong> 11.7</p>
+    <p><strong>Indicator:</strong> 11.7.1</p>
+    <p>In terrace farming, there is uneven distribution of cultivable and fertile land. Therefore, we need to sort the terraces based on soil quality, so we can prioritize which terraces need more attention. Terrace farming often involves monitoring the soil quality of different areas. Sorting these terraces allows farmers to prioritize resources where they’re needed most. To implement this, we will use the quick sort algorithm.</p>
+</section>
+
+</body>
+</html>
