@@ -1,0 +1,56 @@
+#include <iostream>
+#include <queue>
+#include <vector>
+
+using namespace std;
+
+
+struct Node {
+    string name;
+    int flowCapacity;
+    vector<Node*> neighbors;  // List of neighboring nodes (connected by pipelines)
+};
+
+
+void levelOrderTraversal(Node* root) {
+    if (root == nullptr) {
+        return;
+    }
+
+    // Queue to manage the level order traversal
+    queue<Node*> q;
+    q.push(root);
+
+    while (!q.empty()) {
+        Node* current = q.front();
+        q.pop();
+        
+        cout << "Node: " << current->name << " | Flow Capacity: " << current->flowCapacity << endl;
+
+        // Add neighbors to the queue for the next level
+        for (Node* neighbor : current->neighbors) {
+            q.push(neighbor);
+        }
+    }
+}
+
+int main() {
+   
+    Node* dam = new Node{"Dam", 100};  // Dam has 100 units of water flow capacity
+    Node* reservoir1 = new Node{"Reservoir1", 50};
+    Node* reservoir2 = new Node{"Reservoir2", 60};
+    Node* industrial1 = new Node{"Industrial1", 40};
+    Node* farmland1 = new Node{"Farmland1", 30};
+
+    
+    dam->neighbors.push_back(reservoir1);
+    dam->neighbors.push_back(reservoir2);
+    reservoir1->neighbors.push_back(industrial1);
+    reservoir2->neighbors.push_back(farmland1);
+
+   
+    cout << "Level Order Traversal of Water Pipeline Network:" << endl;
+    levelOrderTraversal(dam);
+
+    return 0;
+}
