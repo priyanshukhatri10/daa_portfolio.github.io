@@ -1,0 +1,41 @@
+
+#include <iostream>
+#include <queue>
+#include <vector>
+
+using namespace std;
+
+struct Terrace {
+    int id, priority;
+    Terrace(int id, int priority) : id(id), priority(priority) {}
+
+    bool operator<(const Terrace& other) const {
+        return priority < other.priority;
+    }
+};
+
+int main() {
+    int N;
+
+    // User Input
+    cout << "Enter number of terraces: ";
+    cin >> N;
+
+    priority_queue<Terrace> pq;
+
+    for (int i = 0; i < N; ++i) {
+        int priority;
+        cout << "Enter priority for terrace " << i << ": ";
+        cin >> priority;
+        pq.push(Terrace(i, priority));
+    }
+
+    cout << "Resource allocation order (highest priority first):\n";
+    while (!pq.empty()) {
+        Terrace t = pq.top();
+        pq.pop();
+        cout << "Allocate resources to Terrace " << t.id << " with priority " << t.priority << endl;
+    }
+
+    return 0;
+}
