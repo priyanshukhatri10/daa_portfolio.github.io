@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Business Case: Water Supply Network</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #2e3b4e;
+            color: #eaecee;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #1abc9c;
+            padding: 20px;
+            text-align: center;
+        }
+        h1 {
+            font-size: 2.5rem;
+            color: #fff;
+        }
+        h2, h3 {
+            color: #f39c12;
+        }
+        p, table {
+            font-size: 1rem;
+            line-height: 1.6;
+            margin: 20px;
+        }
+        table {
+            width: 80%;
+            margin: 20px auto;
+            border-collapse: collapse;
+            background-color: #34495e;
+        }
+        table th, table td {
+            padding: 12px;
+            text-align: left;
+            border: 1px solid #ecf0f1;
+        }
+        table th {
+            background-color: #d35400;
+            color: #fff;
+        }
+        table caption {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #eaecee;
+            margin-bottom: 10px;
+        }
+        a {
+            color: #1abc9c;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        .content-section {
+            margin: 20px;
+        }
+        .content-section h3 {
+            margin-top: 10px;
+            font-size: 1.5rem;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Business Case: Water Supply Network</h1>
+</header>
+
+<section class="content-section">
+    <h2>Subtask: Water Pipelining Optimization</h2>
+    <h3>SDG Goal: 11</h3>
+    <p><strong>Target:</strong> 11.6</p>
+    <p><strong>Indicator:</strong> 11.6.1</p>
+
+    <p>Shyamora’s water supply system is designed to ensure everyone has access to clean water. The main water source is the Yamuna River, and the system includes smart water tanks to help distribute water efficiently. Our goal is to provide all households and industrial areas with fair access to water, supporting Shyamora’s vision of a sustainable urban environment.</p>
+
+    <table>
+        <caption>Water Supply Network: Infrastructure Overview</caption>
+        <tr>
+            <th>Component</th>
+            <th>Quantity</th>
+        </tr>
+        <tr>
+            <td>Primary Water Source</td>
+            <td>1</td>
+        </tr>
+        <tr>
+            <td>Smart Water Tanks</td>
+            <td>3</td>
+        </tr>
+        <tr>
+            <td>Urban Households Served</td>
+            <td>5</td>
+        </tr>
+        <tr>
+            <td>Industrial Zones Served</td>
+            <td>2</td>
+        </tr>
+    </table>
+
+    <p class="figure">Fig 1: Water Supply Network Overview</p>
+
+    <p>To create an efficient water distribution plan for Shyamora, we use Prim's algorithm, which efficiently finds the minimum spanning tree, ensuring all parts of the water supply network are connected at the lowest cost. This method helps us connect all the important parts of our water system while keeping costs low. We also consider the distances as costs between each component to ensure the best connections.</p>
+
+    <p>You can find the code used for Prim's algorithm <a href="#" target="_blank">HERE</a> (link to Prim's code). This code is efficient, with a performance of O(E log V), which helps us manage the water distribution network effectively.</p>
+</section>
+
+<section class="content-section">
+    <h2>Subtask 2: Water Scheduling</h2>
+    <h3>SDG Goal: 11</h3>
+    <p><strong>Target:</strong> 11.6</p>
+    <p><strong>Indicator:</strong> 11.6.1</p>
+    <p>Water scheduling is required to optimize the water distribution system. The city of Shyamora consists of various zones like industrial, residential, and agricultural that require water at different times throughout the day. The goal is to manage the water supply in such a way that the demand for water from these zones is met while minimizing wastage and ensuring that no zone experiences water shortages.</p>
+    <p>To solve this, we will use the sliding window technique which is often used to optimize problems where we need to consider a fixed-size window of data and slide through the data to find optimal solutions. In the context of water usage scheduling, this technique helps in efficiently managing the time slots and distributing water among different zones.</p>
+    <p>Implementation: First, we will collect water demands for each zone at various time intervals. Then, we will iterate over the time slots, maintaining a sliding window that adjusts the allocation of water based on the current demand within that window. Ensure that the total water allocated within the window is within the available supply. If the total demand exceeds the supply, adjust the water distribution by reducing the allocation to zones with lower priority (e.g., residential zones may have a lower priority than agricultural zones).</p>
+    <p>You can find the code for efficient water scheduling <a href="#" target="_blank">HERE</a> (link to scheduling code).</p>
+</section>
+
+<section class="content-section">
+    <h2>Subtask 3: Water Traffic Flow Analysis</h2>
+    <h3>SDG Goal: 11</h3>
+    <p><strong>Target:</strong> 11.5</p>
+    <p><strong>Indicator:</strong> 11.5.2</p>
+    <p>The water distribution system in Shyamora has various pipelines connecting reservoirs, industrial zones, and farmlands. Each pipeline has a certain capacity for water flow, and it is important to analyze the traffic (i.e., water flow) through the pipelines to ensure that no part of the pipeline network gets congested.</p>
+    <p>To implement this, we will use level order traversal to analyze the flow of water through different components of the pipeline network. By representing the pipeline network as a tree or graph, we can use level order traversal (also known as Breadth-First Search (BFS)) to evaluate how water flows from the source (dam) to the farthest zones, step by step, level by level.</p>
+
+    <h3>Execution</h3>
+    <p>First, we will create a tree structure where its nodes represent components of the pipeline system and edges represent the flow of water. Then, we will traverse line by line, monitoring water flow and checking pipeline capacity. If the pipeline exceeds its flow capacity, we will take action by rerouting the water or optimizing the flow distribution. You can find the code for water traffic flow analysis <a href="#" target="_blank">HERE</a> (link to flow analysis code).</p>
+</section>
+
+</body>
+</html>
