@@ -1,0 +1,33 @@
+#include <iostream>
+#include <cmath>  //
+
+using namespace std;
+
+// Function to calculate EOQ
+double calculateEOQ(double D, double S, double H) {
+    // EOQ formula: sqrt(2 * D * S / H)
+    return sqrt((2 * D * S) / H);
+}
+
+int main() {
+    
+    double demand, orderCost, holdingCost;
+
+    
+    cout << "Enter the annual demand (D) in units: ";
+    cin >> demand;
+
+    cout << "Enter the ordering cost (S) in ₹ per order: ";
+    cin >> orderCost;
+
+    cout << "Enter the holding cost (H) in ₹ per unit per year: ";
+    cin >> holdingCost;
+
+    
+    double eoq = calculateEOQ(demand, orderCost, holdingCost);
+
+    // Output the EOQ result
+    cout << "The optimal Economic Order Quantity (EOQ) is: " << eoq << " units." << endl;
+
+    return 0;
+}
