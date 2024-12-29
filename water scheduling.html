@@ -35,7 +35,7 @@
     <pre><code>
 #include &lt;iostream&gt;
 #include &lt;vector&gt;
-#include &lt;algorithm&gt;  // For max() function
+#include &lt;algorithm&gt; 
 
 using namespace std;
 
@@ -45,10 +45,10 @@ void scheduleWaterUsage(const vector&lt;int&gt;&amp; waterDemand, int windowSize
     int maxWaterUsage = 0;
 
     for (int i = 0; i &lt; windowSize; ++i) {
-        currentWater += waterDemand[i];  // Add water demand in the window
+        currentWater += waterDemand[i]; 
     }
 
-    maxWaterUsage = currentWater;  // Initialize max usage with the first window
+    maxWaterUsage = currentWater; 
     for (int i = windowSize; i &lt; n; ++i) {
         currentWater = currentWater - waterDemand[i - windowSize] + waterDemand[i];
         maxWaterUsage = max(maxWaterUsage, currentWater);
