@@ -1,135 +1,232 @@
-/* Basic Reset */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+<!DOCTYPE html>
+<html lang="en">
 
-/* Body and Font */
-body {
-    font-family: 'Poppins', sans-serif;
-    line-height: 1.6;
-    background-color: #f4f4f9;
-    color: #333;
-    padding: 20px;
-}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
 
-h1, h2 {
-    color: #333;
-}
+    <!-- Google Font (Poppins) -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
-/* Header Section */
-header {
-    background-color: #4CAF50;
-    color: #fff;
-    text-align: center;
-    padding: 40px 20px;
-    border-radius: 8px;
-    margin-bottom: 30px;
-}
+    <!-- CSS Styling -->
+    <style>
+        /* Resetting some default styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-header h1 {
-    font-size: 2.5rem;
-}
+        /* Body Styles */
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            background-color: #f4f7fc;
+            color: #333;
+            padding: 0 20px;
+        }
 
-header p {
-    font-size: 1.2rem;
-}
+        /* Header Styling */
+        header {
+            background-color: #007bff; /* Bright Blue */
+            color: white;
+            text-align: center;
+            padding: 60px 20px;
+            border-radius: 8px;
+            margin-bottom: 40px;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+        }
 
-/* Section Style */
-section {
-    max-width: 900px;
-    margin: 0 auto;
-}
+        header h1 {
+            font-size: 2.8rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
 
-/* Project Section */
-h2 {
-    font-size: 2rem;
-    margin-bottom: 15px;
-    color: #333;
-}
+        header p {
+            font-size: 1.2rem;
+            margin-top: 10px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.6;
+        }
 
-ul {
-    list-style-type: none;
-    margin-left: 0;
-}
+        /* Section Styling */
+        section {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.05);
+        }
 
-li {
-    margin-bottom: 20px;
-    padding: 15px;
-    background-color: #fff;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-}
+        /* Section Heading Styling */
+        h2 {
+            font-size: 2.4rem;
+            color: #333;
+            margin-bottom: 20px;
+            font-weight: 600;
+            border-bottom: 3px solid #007bff;
+            display: inline-block;
+            padding-bottom: 5px;
+        }
 
-strong {
-    display: block;
-    font-size: 1.2rem;
-    margin-bottom: 5px;
-}
+        /* Project List Styling */
+        ul {
+            list-style: none;
+            padding: 0;
+        }
 
-p {
-    font-size: 1rem;
-    color: #555;
-}
+        ul li {
+            background-color: #fff;
+            margin-bottom: 20px;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 5px solid #007bff;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
 
-/* Skills Section */
-ul li {
-    background-color: #fafafa;
-    border: 1px solid #eee;
-}
+        ul li:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+        }
 
-h2 + ul {
-    padding-left: 20px;
-}
+        ul li strong {
+            font-size: 1.5rem;
+            color: #007bff;
+            display: block;
+            margin-bottom: 10px;
+        }
 
-/* Find Me Online Section */
-ul li a {
-    color: #4CAF50;
-    text-decoration: none;
-    font-size: 1.1rem;
-    transition: color 0.3s ease;
-}
+        ul li p {
+            font-size: 1rem;
+            color: #555;
+            margin-top: 10px;
+        }
 
-ul li a:hover {
-    color: #333;
-}
+        /* Skills Section */
+        ul li {
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+        }
 
-/* Blockquote */
-blockquote {
-    font-style: italic;
-    font-size: 1.5rem;
-    color: #555;
-    border-left: 5px solid #4CAF50;
-    padding-left: 20px;
-    margin-top: 30px;
-    text-align: center;
-}
+        ul li {
+            padding: 12px;
+            background-color: #fafafa;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
 
-/* Add some spacing and make the layout mobile responsive */
-@media screen and (max-width: 768px) {
-    header {
-        padding: 20px 10px;
-    }
+        ul li:last-child {
+            margin-bottom: 0;
+        }
 
-    h1 {
-        font-size: 2rem;
-    }
+        ul li a {
+            color: #007bff;
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: color 0.3s ease;
+        }
 
-    h2 {
-        font-size: 1.6rem;
-    }
+        ul li a:hover {
+            color: #0056b3;
+        }
 
-    p {
-        font-size: 1rem;
-    }
+        /* Find Me Online Section */
+        ul li a {
+            font-size: 1.1rem;
+            display: block;
+            margin-bottom: 10px;
+            transition: color 0.3s ease;
+        }
 
-    ul li {
-        padding: 12px;
-    }
+        ul li a:hover {
+            color: #0056b3;
+        }
 
-    blockquote {
-        font-size: 1.2rem;
-    }
-}
+        /* Blockquote Styling */
+        blockquote {
+            font-size: 1.5rem;
+            font-style: italic;
+            color: #555;
+            border-left: 5px solid #007bff;
+            padding-left: 20px;
+            margin-top: 40px;
+            text-align: center;
+            line-height: 1.4;
+        }
 
+        /* Responsive Design for Mobile Devices */
+        @media screen and (max-width: 768px) {
+            header {
+                padding: 30px 20px;
+            }
+
+            header h1 {
+                font-size: 2.5rem;
+            }
+
+            header p {
+                font-size: 1rem;
+            }
+
+            section {
+                padding: 15px;
+            }
+
+            h2 {
+                font-size: 1.8rem;
+            }
+
+            ul li {
+                padding: 15px;
+            }
+
+            blockquote {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Hello, I'm Priyanshu Khatri👋</h1>
+        <p>I am currently pursuing my BE in Computer Science Engineering from KLE Tech University, Hubli. I am passionate about technology and problem-solving. Here's a glimpse of my work:</p>
+    </header>
+
+    <section>
+        <h2>🛠️ PROJECTS</h2>
+        <ul>
+            <li><strong>SCRIBE AWARENESS FOR VISUALLY IMPAIRED INDIVIDUAL</strong>
+                <p>To solve the problem of the lack of availability of scribes, we created a website where visually impaired individuals can connect with available scribes in their area. We also spread awareness through the platform.</p>
+            </li>
+            <li><strong>CIRCULAR SYMPHONY</strong>
+                <p>During our exploration course, we worked on the theme of kinetic sculptures. Taking inspiration from David C. Roy's works, we created a kinetic sculpture consisting of two designed wheels connected via Bluetooth, showcasing different designs and patterns.</p>
+            </li>
+        </ul>
+
+        <h2>🚀 Skills</h2>
+        <ul>
+            <li>C++, Python, JavaScript</li>
+            <li>Data Structures and Algorithms</li>
+            <li>Web Development (React.js, Node.js)</li>
+        </ul>
+
+        <h2>🌐 Find Me Online</h2>
+        <ul>
+            <li><a href="https://github.com/your-github-username" target="_blank">GitHub</a></li>
+            <li><a href="https://linkedin.com/in/your-linkedin-profile" target="_blank">LinkedIn</a></li>
+            <li><a href="buisnesscase_shyammora.html" target="_blank">Shyammora Profile</a></li>
+            <li><a href="introduction_daa.html" target="_blank">Introduction DAA</a></li>
+        </ul>
+
+        <blockquote>“The only way to do great work is to love what you do.” – Steve Jobs</blockquote>
+    </section>
+</body>
+
+</html>
