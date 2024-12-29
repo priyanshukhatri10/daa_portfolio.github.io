@@ -1,7 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>C++ Resource Allocation with Priority Queue</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            padding: 20px;
+        }
+        pre {
+            background-color: #2d2d2d;
+            color: #f8f8f2;
+            padding: 15px;
+            border-radius: 5px;
+            overflow: auto;
+        }
+        code {
+            font-family: monospace;
+            display: block;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
 
-#include <iostream>
-#include <queue>
-#include <vector>
+    <h1>C++ Resource Allocation with Priority Queue</h1>
+
+    <pre><code>
+#include &lt;iostream&gt;
+#include &lt;queue&gt;
+#include &lt;vector&gt;
 
 using namespace std;
 
@@ -9,33 +43,36 @@ struct Terrace {
     int id, priority;
     Terrace(int id, int priority) : id(id), priority(priority) {}
 
-    bool operator<(const Terrace& other) const {
-        return priority < other.priority;
+    bool operator&lt;(const Terrace&amp; other) const {
+        return priority &lt; other.priority;
     }
 };
 
 int main() {
     int N;
 
-    // User Input
-    cout << "Enter number of terraces: ";
-    cin >> N;
+    cout &lt;&lt; "Enter number of terraces: ";
+    cin &gt;&gt; N;
 
-    priority_queue<Terrace> pq;
+    priority_queue&lt;Terrace&gt; pq;
 
-    for (int i = 0; i < N; ++i) {
+    for (int i = 0; i &lt; N; ++i) {
         int priority;
-        cout << "Enter priority for terrace " << i << ": ";
-        cin >> priority;
+        cout &lt;&lt; "Enter priority for terrace " &lt;&lt; i &lt;&lt; ": ";
+        cin &gt;&gt; priority;
         pq.push(Terrace(i, priority));
     }
 
-    cout << "Resource allocation order (highest priority first):\n";
+    cout &lt;&lt; "Resource allocation order (highest priority first):\n";
     while (!pq.empty()) {
         Terrace t = pq.top();
         pq.pop();
-        cout << "Allocate resources to Terrace " << t.id << " with priority " << t.priority << endl;
+        cout &lt;&lt; "Allocate resources to Terrace " &lt;&lt; t.id &lt;&lt; " with priority " &lt;&lt; t.priority &lt;&lt; endl;
     }
 
     return 0;
 }
+    </code></pre>
+
+</body>
+</html>
