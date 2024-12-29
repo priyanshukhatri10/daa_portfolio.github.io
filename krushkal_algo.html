@@ -3,130 +3,168 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>C++ Kruskal's Algorithm for Supply Chain Optimization</title>
+    <title>Kruskal's Algorithm C++ Code</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #f4f4f9;
-            color: #333;
-            padding: 20px;
+            line-height: 1.6;
+            margin: 20px;
         }
+
         pre {
-            background-color: #2d2d2d;
-            color: #f8f8f2;
+            background-color: #f4f4f4;
             padding: 15px;
             border-radius: 5px;
-            overflow: auto;
+            font-size: 14px;
+            white-space: pre-wrap;
+            word-wrap: break-word;
         }
-        code {
-            font-family: monospace;
-            display: block;
-        }
+
         h1 {
-            text-align: center;
             color: #333;
+        }
+
+        p {
+            margin-bottom: 15px;
+        }
+
+        .code-section {
+            margin-top: 20px;
+        }
+
+        .run-btn {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+        }
+
+        .run-btn:hover {
+            background-color: #45a049;
         }
     </style>
 </head>
 <body>
 
-    <h1>C++ Kruskal's Algorithm for Supply Chain Optimization</h1>
+    <h1>Kruskal's Algorithm Implementation in C++</h1>
 
-    <pre><code>
+    <p>
+        This page demonstrates the implementation of Kruskal's Algorithm in C++ to find the Minimum Spanning Tree (MST) of a graph.
+    </p>
+
+    <div class="code-section">
+        <h2>C++ Code:</h2>
+        <pre>
 #include &lt;iostream&gt;
 #include &lt;vector&gt;
 #include &lt;algorithm&gt;
-
 using namespace std;
+
 
 struct Edge {
     int src, dest, weight;
-
-    bool operator&lt;(const Edge&amp; e) {
-        return weight &lt; e.weight;
-    }
 };
 
-class DisjointSet {
-public:
-    vector&lt;int&gt; parent, rank;
 
-    DisjointSet(int n) {
-        parent.resize(n);
-        rank.resize(n, 0);
-        for (int i = 0; i &lt; n; i++) {
-            parent[i] = i; // Initialize parent of each node to itself
+bool compareEdges(Edge a, Edge b) {
+    return a.weight &lt; b.weight;
+}
+
+
+int findParent(int node, vector&lt;int&gt;& parent) {
+    if (parent[node] == node)
+        return node;
+    return parent[node] = findParent(parent[node], parent);
+}
+
+
+void unionSets(int u, int v, vector&lt;int&gt;& parent, vector&lt;int&gt;& rank) {
+    u = findParent(u, parent);
+    v = findParent(v, parent);
+    if (rank[u] &lt; rank[v]) {
+        parent[u] = v;
+    } else if (rank[u] &gt; rank[v]) {
+        parent[v] = u;
+    } else {
+        parent[v] = u;
+        rank[u]++;
+    }
+}
+
+
+void kruskal(int V, vector&lt;Edge&gt;& edges) {
+    
+    sort(edges.begin(), edges.end(), compareEdges);
+
+    
+    vector&lt;int&gt; parent(V);
+    vector&lt;int&gt; rank(V, 0);
+    for (int i = 0; i &lt; V; i++) {
+        parent[i] = i;
+    }
+
+    vector&lt;Edge&gt; mst; // Store the edges of the MST
+    int mstWeight = 0; 
+    for (Edge& edge : edges) {
+        int u = findParent(edge.src, parent);
+        int v = findParent(edge.dest, parent);
+
+      
+        if (u != v) {
+            mst.push_back(edge);
+            mstWeight += edge.weight;
+            unionSets(u, v, parent, rank);
         }
     }
 
-    int find(int u) {
-        if (parent[u] != u) {
-            parent[u] = find(parent[u]); // Path compression
-        }
-        return parent[u];
+    
+    cout &lt;&lt; "MST Edges:" &lt;&lt; endl;
+    for (Edge& edge : mst) {
+        cout &lt;&lt; edge.src &lt;&lt; " -- " &lt;&lt; edge.dest &lt;&lt; " (Weight: " &lt;&lt; edge.weight &lt;&lt; ")" &lt;&lt; endl;
     }
 
-    void unionSet(int u, int v) {
-        int rootU = find(u);
-        int rootV = find(v);
-
-        if (rootU != rootV) {
-            if (rank[rootU] &gt; rank[rootV]) {
-                parent[rootV] = rootU;
-            } else if (rank[rootU] &lt; rank[rootV]) {
-                parent[rootU] = rootV;
-            } else {
-                parent[rootV] = rootU;
-                rank[rootU]++;
-            }
-        }
-    }
-};
-
-vector&lt;Edge&gt; kruskal(int V, vector&lt;Edge&gt;&amp; edges) {
-    sort(edges.begin(), edges.end()); // Step 1: Sort all edges by weight
-
-    DisjointSet ds(V);  // Create disjoint set for V vertices
-    vector&lt;Edge&gt; mst;    // To store the result MST
-
-    for (auto&amp; edge : edges) {
-        int u = edge.src;
-        int v = edge.dest;
-
-        if (ds.find(u) != ds.find(v)) {
-            ds.unionSet(u, v);
-            mst.push_back(edge);  // Add edge to the MST
-        }
-    }
-
-    return mst;
+    cout &lt;&lt; "Total MST Weight: " &lt;&lt; mstWeight &lt;&lt; endl;
 }
 
 int main() {
-    int V = 9;  // Total vertices in the graph based on the cost matrix
+    
+    int V = 6;
 
-    // Edges extracted from the cost matrix
-    vector&lt;Edge&gt; edges = {
-        {0, 1, 4}, {0, 4, 3}, {1, 2, 6}, {1, 3, 1},
-        {2, 4, 5}, {2, 6, 8}, {3, 4, 2}, {4, 5, 5},
-        {4, 6, 6}, {5, 7, 2}, {5, 8, 8}, {6, 7, 3},
-        {7, 8, 7}
+    int adjMatrix[6][6] = {
+        {0, 2, 4, 0, 0, 0},
+        {2, 0, 1, 7, 0, 0},
+        {4, 1, 0, 3, 5, 0},
+        {0, 7, 3, 0, 6, 10},
+        {0, 0, 5, 6, 0, 8},
+        {0, 0, 0, 10, 8, 0}
     };
 
-    vector&lt;Edge&gt; mst = kruskal(V, edges);
-
-    cout &lt;&lt; "Minimum Spanning Tree (MST) for Supply Chain Optimization:\n";
-    int totalWeight = 0;
-    for (auto&amp; edge : mst) {
-        cout &lt;&lt; "Edge (" &lt;&lt; edge.src &lt;&lt; " -&gt; " &lt;&lt; edge.dest &lt;&lt; ") with weight: " &lt;&lt; edge.weight &lt;&lt; endl;
-        totalWeight += edge.weight;
+    
+    vector&lt;Edge&gt; edges;
+    for (int i = 0; i &lt; V; i++) {
+        for (int j = i + 1; j &lt; V; j++) { 
+            if (adjMatrix[i][j] != 0) {  
+                edges.push_back(Edge{i, j, adjMatrix[i][j]});
+            }
+        }
     }
 
-    cout &lt;&lt; "Total cost of the supply chain network: " &lt;&lt; totalWeight &lt;&lt; endl;
+ 
+    kruskal(V, edges);
 
     return 0;
 }
-    </code></pre>
+        </pre>
+    </div>
+
+    <div>
+        <p>
+            To run this code, copy and paste it into a C++ file (e.g., <code>kruskal.cpp</code>) and compile it using a C++ compiler like g++.
+        </p>
+        <button class="run-btn" onclick="alert('The C++ code cannot be run directly in the browser. Please use a C++ compiler to execute the code.')">Run the Code</button>
+    </div>
 
 </body>
 </html>
