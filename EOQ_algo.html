@@ -1,33 +1,68 @@
-#include <iostream>
-#include <cmath>  //
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>C++ Economic Order Quantity (EOQ) Calculation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            padding: 20px;
+        }
+        pre {
+            background-color: #2d2d2d;
+            color: #f8f8f2;
+            padding: 15px;
+            border-radius: 5px;
+            overflow: auto;
+        }
+        code {
+            font-family: monospace;
+            display: block;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>C++ Economic Order Quantity (EOQ) Calculation</h1>
+
+    <pre><code>
+#include &lt;iostream&gt;
+#include &lt;cmath&gt;  
 
 using namespace std;
 
-// Function to calculate EOQ
 double calculateEOQ(double D, double S, double H) {
     // EOQ formula: sqrt(2 * D * S / H)
     return sqrt((2 * D * S) / H);
 }
 
 int main() {
-    
     double demand, orderCost, holdingCost;
 
-    
-    cout << "Enter the annual demand (D) in units: ";
-    cin >> demand;
+    cout &lt;&lt; "Enter the annual demand (D) in units: ";
+    cin &gt;&gt; demand;
 
-    cout << "Enter the ordering cost (S) in ₹ per order: ";
-    cin >> orderCost;
+    cout &lt;&lt; "Enter the ordering cost (S) in ₹ per order: ";
+    cin &gt;&gt; orderCost;
 
-    cout << "Enter the holding cost (H) in ₹ per unit per year: ";
-    cin >> holdingCost;
+    cout &lt;&lt; "Enter the holding cost (H) in ₹ per unit per year: ";
+    cin &gt;&gt; holdingCost;
 
-    
     double eoq = calculateEOQ(demand, orderCost, holdingCost);
 
     // Output the EOQ result
-    cout << "The optimal Economic Order Quantity (EOQ) is: " << eoq << " units." << endl;
+    cout &lt;&lt; "The optimal Economic Order Quantity (EOQ) is: " &lt;&lt; eoq &lt;&lt; " units." &lt;&lt; endl;
 
     return 0;
 }
+    </code></pre>
+
+</body>
+</html>
