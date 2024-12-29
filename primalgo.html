@@ -1,121 +1,64 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>C++ Prim's Algorithm for Water Distribution Network</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f9;
-            color: #333;
-            padding: 20px;
-        }
-        pre {
-            background-color: #2d2d2d;
-            color: #f8f8f2;
-            padding: 15px;
-            border-radius: 5px;
-            overflow: auto;
-        }
-        code {
-            font-family: monospace;
-            display: block;
-        }
-        h1 {
-            text-align: center;
-            color: #333;
-        }
-    </style>
-</head>
-<body>
-
-    <h1>C++ Prim's Algorithm for Water Distribution Network</h1>
-
-    <pre><code>
-#include &lt;iostream&gt;
-#include &lt;vector&gt;
-#include &lt;climits&gt;
-#include &lt;queue&gt;
-
+#include <iostream>
+#include <climits>
 using namespace std;
 
-#define MAX 100
-#define INF INT_MAX
+#define V 9 // Number of vertices in the graph
 
-class Graph {
-public:
-    int V;  // Number of vertices (areas)
-    vector&lt;pair&lt;int, int&gt;&gt; adj[MAX];  // adjacency list: (node, cost)
+int selectMinVertex(bool mstSet[], int key[]) {
+    int min = INT_MAX, minIndex;
+    for (int i = 0; i < V; i++) {
+        if (!mstSet[i] && key[i] < min) {
+            min = key[i];
+            minIndex = i;
+        }
+    }
+    return minIndex;
+}
 
-    Graph(int V) {
-        this-&gt;V = V;
+void primMST(int graph[V][V]) {
+    int parent[V];   // Stores the MST
+    int key[V];      // Key values used to pick minimum weight edge
+    bool mstSet[V];  // To represent the set of vertices included in MST
+
+    for (int i = 0; i < V; i++) {
+        key[i] = INT_MAX;
+        mstSet[i] = false;
     }
 
-    // Add edge to the graph
-    void addEdge(int u, int v, int cost) {
-        adj[u].push_back(make_pair(v, cost));
-        adj[v].push_back(make_pair(u, cost));  // because the graph is undirected
-    }
+    key[0] = 0;       // Start from the first vertex
+    parent[0] = -1;   // Root node doesn't have a parent
 
-    // Perform Prim's MST Algorithm
-    void primMST() {
-        vector&lt;int&gt; key(V, INF);
-        vector&lt;int&gt; parent(V, -1);
-        vector&lt;bool&gt; inMST(V, false);
-        
-        priority_queue&lt;pair&lt;int, int&gt;, vector&lt;pair&lt;int, int&gt;&gt;, greater&lt;pair&lt;int, int&gt;&gt;&gt; pq;
-        
-        key[0] = 0;
-        pq.push(make_pair(0, 0));  // (key value, node)
+    for (int i = 0; i < V - 1; i++) {
+        int u = selectMinVertex(mstSet, key);
+        mstSet[u] = true;
 
-        while (!pq.empty()) {
-            int u = pq.top().second;  // node with minimum key
-            pq.pop();
-
-            if (inMST[u]) continue;
-
-            inMST[u] = true;
-
-            for (auto edge : adj[u]) {
-                int v = edge.first;   // Neighbor node
-                int weight = edge.second;  // Cost to reach this node
-
-                // If the neighbor node is not yet included in MST and 
-                // the cost to reach it is smaller than the current key, update it
-                if (!inMST[v] && key[v] &gt; weight) {
-                    key[v] = weight;
-                    parent[v] = u;
-                    pq.push(make_pair(key[v], v));
-                }
+        for (int v = 0; v < V; v++) {
+            if (graph[u][v] && !mstSet[v] && graph[u][v] < key[v]) {
+                key[v] = graph[u][v];
+                parent[v] = u;
             }
         }
-
-        // Print the MST
-        printMST(parent);
     }
 
-    // Print the edges of the MST
-    void printMST(vector&lt;int&gt;& parent) {
-        int totalCost = 0;
-        cout &lt;&lt; "Edge\tWeight\n";
-        for (int i = 1; i &lt; V; i++) {
-            cout &lt;&lt; parent[i] &lt;&lt; " - " &lt;&lt; i &lt;&lt; "\t" &lt;&lt; getWeight(parent[i], i) &lt;&lt; endl;
-            totalCost += getWeight(parent[i], i);
-        }
-        cout &lt;&lt; "\nTotal Cost of Water Distribution Network: " &lt;&lt; totalCost &lt;&lt; endl;
+    cout << "Edge\tWeight\n";
+    for (int i = 1; i < V; i++) {
+        cout << parent[i] << " - " << i << "\t" << graph[i][parent[i]] << endl;
     }
-
-    // Get the weight (cost) of the edge between nodes u and v
-    int getWeight(int u, int v) {
-        for (auto edge : adj[u]) {
-            if (edge.first == v) {
-                return edge.second;
-            }
-        }
-        return INF;
-    }
-};
+}
 
 int main() {
-    int V = 5
+    int graph[V][V] = {
+        {0, 4, 0, 0, 3, 0, 0, 0, 0},
+        {4, 0, 6, 1, 0, 0, 0, 0, 0},
+        {0, 6, 0, 0, 5, 0, 8, 0, 0},
+        {0, 1, 0, 0, 2, 0, 0, 0, 0},
+        {3, 0, 5, 2, 0, 5, 6, 0, 0},
+        {0, 0, 0, 0, 5, 0, 0, 2, 8},
+        {0, 0, 8, 0, 6, 0, 0, 3, 0},
+        {0, 0, 0, 0, 0, 2, 3, 0, 7},
+        {0, 0, 0, 0, 0, 8, 0, 7, 0}
+    };
+
+    primMST(graph);
+    return 0;
+}
