@@ -109,10 +109,11 @@
         </tr>
     </table>
 
+     <img src="dijistraas.jpg" alt="Image related to dijistras implementation" width="350">
     <h3>Fig 1: Irrigation Network Map</h3>
     <p>An optimal irrigation plan is prepared for Shymora using Dijkstra's algorithm, which provides the shortest path distance for water distribution 
         across the irrigation network. 
-        <a href="LINK_TO_DIJKSTRAS_CODE" target="_blank">HERE</a> (provide link to Dijkstra's code). 
+        <a href="dijistras algorithm.html" target="_blank">HERE</a> (provide link to Dijkstra's code). 
         The code is implemented using a Heap data structure, and its efficiency is O(E log V). The algorithm uses the greedy technique, ensuring 
         that water distribution to farmlands is both efficient and cost-effective. This case study demonstrates the practical application of Dijkstra's 
         algorithm in optimizing water distribution networks for agricultural purposes.
