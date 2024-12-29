@@ -1,49 +1,79 @@
-#include <iostream>
-#include <vector>
-#include <algorithm>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>C++ Kruskal's Algorithm for Supply Chain Optimization</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            padding: 20px;
+        }
+        pre {
+            background-color: #2d2d2d;
+            color: #f8f8f2;
+            padding: 15px;
+            border-radius: 5px;
+            overflow: auto;
+        }
+        code {
+            font-family: monospace;
+            display: block;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>C++ Kruskal's Algorithm for Supply Chain Optimization</h1>
+
+    <pre><code>
+#include &lt;iostream&gt;
+#include &lt;vector&gt;
+#include &lt;algorithm&gt;
 
 using namespace std;
 
-// Structure for an edge
 struct Edge {
     int src, dest, weight;
-    
-    // Comparator to sort edges based on their weight
-    bool operator<(const Edge& e) {
-        return weight < e.weight;
+
+    bool operator&lt;(const Edge&amp; e) {
+        return weight &lt; e.weight;
     }
 };
 
-// Class to represent a Disjoint Set (Union-Find) data structure
 class DisjointSet {
 public:
-    vector<int> parent, rank;
-    
+    vector&lt;int&gt; parent, rank;
+
     DisjointSet(int n) {
         parent.resize(n);
         rank.resize(n, 0);
-        for (int i = 0; i < n; i++) {
+        for (int i = 0; i &lt; n; i++) {
             parent[i] = i; // Initialize parent of each node to itself
         }
     }
-    
-    // Find operation with path compression
+
     int find(int u) {
         if (parent[u] != u) {
             parent[u] = find(parent[u]); // Path compression
         }
         return parent[u];
     }
-    
-    // Union operation by rank
+
     void unionSet(int u, int v) {
         int rootU = find(u);
         int rootV = find(v);
-        
+
         if (rootU != rootV) {
-            if (rank[rootU] > rank[rootV]) {
+            if (rank[rootU] &gt; rank[rootV]) {
                 parent[rootV] = rootU;
-            } else if (rank[rootU] < rank[rootV]) {
+            } else if (rank[rootU] &lt; rank[rootV]) {
                 parent[rootU] = rootV;
             } else {
                 parent[rootV] = rootU;
@@ -53,54 +83,50 @@ public:
     }
 };
 
-// Kruskal's Algorithm to find the MST
-vector<Edge> kruskal(int V, vector<Edge>& edges) {
+vector&lt;Edge&gt; kruskal(int V, vector&lt;Edge&gt;&amp; edges) {
     sort(edges.begin(), edges.end()); // Step 1: Sort all edges by weight
-    
+
     DisjointSet ds(V);  // Create disjoint set for V vertices
-    vector<Edge> mst;    // To store the result MST
-    
-    // Step 2: Process each edge
-    for (auto& edge : edges) {
+    vector&lt;Edge&gt; mst;    // To store the result MST
+
+    for (auto&amp; edge : edges) {
         int u = edge.src;
         int v = edge.dest;
-        
-        // Step 3: If u and v are in different sets, include this edge in MST
+
         if (ds.find(u) != ds.find(v)) {
             ds.unionSet(u, v);
             mst.push_back(edge);  // Add edge to the MST
         }
     }
-    
+
     return mst;
 }
 
 int main() {
-    // Number of nodes (vertices)
     int V = 6;  // Example: 6 supply chain points (factories, warehouses, etc.)
-    
-    // List of edges (src, dest, weight)
-    vector<Edge> edges = {
+
+    vector&lt;Edge&gt; edges = {
         {0, 1, 4}, {0, 2, 4},
         {1, 2, 2}, {1, 3, 5},
         {2, 3, 3}, {2, 4, 6},
         {3, 4, 2}, {3, 5, 7},
         {4, 5, 3}
     };
-    
-    // Get the Minimum Spanning Tree
-    vector<Edge> mst = kruskal(V, edges);
-    
-    // Print the MST edges
-    cout << "Minimum Spanning Tree (MST) for Supply Chain Optimization:\n";
+
+    vector&lt;Edge&gt; mst = kruskal(V, edges);
+
+    cout &lt;&lt; "Minimum Spanning Tree (MST) for Supply Chain Optimization:\n";
     int totalWeight = 0;
-    for (auto& edge : mst) {
-        cout << "Edge (" << edge.src << " -> " << edge.dest << ") with weight: " << edge.weight << endl;
+    for (auto&amp; edge : mst) {
+        cout &lt;&lt; "Edge (" &lt;&lt; edge.src &lt;&lt; " -&gt; " &lt;&lt; edge.dest &lt;&lt; ") with weight: " &lt;&lt; edge.weight &lt;&lt; endl;
         totalWeight += edge.weight;
     }
-    
-    // Print total weight of the MST
-    cout << "Total cost of the supply chain network: " << totalWeight << endl;
-    
+
+    cout &lt;&lt; "Total cost of the supply chain network: " &lt;&lt; totalWeight &lt;&lt; endl;
+
     return 0;
 }
+    </code></pre>
+
+</body>
+</html>
