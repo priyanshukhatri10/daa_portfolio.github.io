@@ -1,33 +1,70 @@
-void scheduleWaterUsage(const vector<int>& waterDemand, int windowSize, int totalWater) {
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>C++ Water Usage Scheduling</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            padding: 20px;
+        }
+        pre {
+            background-color: #2d2d2d;
+            color: #f8f8f2;
+            padding: 15px;
+            border-radius: 5px;
+            overflow: auto;
+        }
+        code {
+            font-family: monospace;
+            display: block;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>C++ Water Usage Scheduling</h1>
+
+    <pre><code>
+#include &lt;iostream&gt;
+#include &lt;vector&gt;
+#include &lt;algorithm&gt;  // For max() function
+
+using namespace std;
+
+void scheduleWaterUsage(const vector&lt;int&gt;&amp; waterDemand, int windowSize, int totalWater) {
     int n = waterDemand.size();
     int currentWater = 0;
     int maxWaterUsage = 0;
 
-    for (int i = 0; i < windowSize; ++i) {
+    for (int i = 0; i &lt; windowSize; ++i) {
         currentWater += waterDemand[i];  // Add water demand in the window
     }
 
     maxWaterUsage = currentWater;  // Initialize max usage with the first window
-    for (int i = windowSize; i < n; ++i) {
-       
+    for (int i = windowSize; i &lt; n; ++i) {
         currentWater = currentWater - waterDemand[i - windowSize] + waterDemand[i];
         maxWaterUsage = max(maxWaterUsage, currentWater);
     }
 
-   
-    cout << "Maximum water usage in any " << windowSize << "-hour window: " << maxWaterUsage << endl;
+    cout &lt;&lt; "Maximum water usage in any " &lt;&lt; windowSize &lt;&lt; "-hour window: " &lt;&lt; maxWaterUsage &lt;&lt; endl;
 
-    
-    if (maxWaterUsage <= totalWater) {
-        cout << "Water usage is within limits." << endl;
+    if (maxWaterUsage &lt;= totalWater) {
+        cout &lt;&lt; "Water usage is within limits." &lt;&lt; endl;
     } else {
-        cout << "Water usage exceeds the available supply. Adjusting allocation..." << endl;
+        cout &lt;&lt; "Water usage exceeds the available supply. Adjusting allocation..." &lt;&lt; endl;
     }
 }
 
 int main() {
-   
-    vector<int> waterDemand = {10, 15, 20, 30, 25, 40, 35, 50, 45, 30, 20, 15, 10, 5, 15, 25, 35, 40, 45, 50, 40, 35, 30, 20};
+    vector&lt;int&gt; waterDemand = {10, 15, 20, 30, 25, 40, 35, 50, 45, 30, 20, 15, 10, 5, 15, 25, 35, 40, 45, 50, 40, 35, 30, 20};
 
     int windowSize = 6;  
     int totalWater = 200;  
@@ -36,3 +73,7 @@ int main() {
 
     return 0;
 }
+    </code></pre>
+
+</body>
+</html>
