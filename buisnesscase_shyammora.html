@@ -1,197 +1,227 @@
-[14:32, 12/12/2024] Prince: <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Course Learning Reflections</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-            background-color: #f8f9fa;
-            color: #333;
-            margin: 0;
-            padding: 0;
-        }
-        h1, h2 {
-            text-align: center;
-            color: #2c3e50;
-        }
-        .container {
-            max-width: 1200px;
-            margin: 20px auto;
-            background: #fff;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-        section {
-            mar…
-[14:33, 12/12/2024] Prince: reflection hai yeh
-[14:33, 12/12/2024] Prince: buisness case shaam ko bhejta
-[15:28, 12/12/2024] Rahul Ranjan: Bheja tha na
-[22:08, 12/12/2024] Prince: <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Business Case Studies - Shyamora</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&family=Montserrat:wght@500&display=swap" rel="stylesheet">
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
+        /* General Styles */
+        * {
             margin: 0;
             padding: 0;
-            background-color: #ffffff;
-            color: #222;
+            box-sizing: border-box;
         }
 
+        body {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+            background-color: #f4f7fa;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* Header Styles */
         header {
-            background-color: #e3f2fd;
-            color: #0d47a1;
-            padding: 1em 0;
+            background-color: #007bff;
+            color: white;
+            padding: 2em 0;
             text-align: center;
-            border-bottom: 2px solid #bbdefb;
+            border-bottom: 4px solid #0056b3;
         }
 
-        main {
-            padding: 2em;
-            max-width: 800px;
+        header h1 {
+            font-size: 2.5rem;
+            font-family: 'Montserrat', sans-serif;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            font-size: 1.1rem;
+            font-weight: 300;
+            max-width: 900px;
             margin: 0 auto;
-            background-color: #fafafa;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            border-radius: 8px;
+            line-height: 1.8;
+        }
+
+        /* Main Content Styles */
+        main {
+            padding: 4em 2em;
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
         section {
-            margin-bottom: 2em;
+            margin-bottom: 2.5em;
+            padding: 2em;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
         }
 
         h2 {
-            color: #0d47a1;
-            border-bottom: 2px solid #bbdefb;
+            font-size: 2rem;
+            color: #007bff;
+            border-bottom: 3px solid #007bff;
             padding-bottom: 0.5em;
+            margin-bottom: 1em;
+        }
+
+        h3 {
+            font-size: 1.4rem;
+            color: #007bff;
+            margin-top: 1.5em;
+            margin-bottom: 1em;
+        }
+
+        p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 1.5em;
         }
 
         ul {
             padding-left: 1.5em;
+            margin-bottom: 1.5em;
         }
 
         li {
-            margin-bottom: 0.5em;
+            font-size: 1.1rem;
+            margin-bottom: 1em;
         }
 
+        /* Link Styles */
+        a.button-link {
+            display: inline-block;
+            padding: 10px 20px;
+            margin-top: 1em;
+            background-color: #007bff;
+            color: white;
+            border-radius: 5px;
+            font-weight: 500;
+            text-align: center;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        a.button-link:hover {
+            background-color: #0056b3;
+            transform: translateY(-3px);
+        }
+
+        /* Footer Styles */
         footer {
             text-align: center;
-            padding: 1em 0;
-            background-color: #e3f2fd;
-            color: #0d47a1;
-            border-top: 2px solid #bbdefb;
+            padding: 1.5em;
+            background-color: #007bff;
+            color: white;
+            font-size: 1rem;
+        }
+
+        footer p {
+            font-weight: 300;
+        }
+
+        /* Media Queries for Responsive Design */
+        @media (max-width: 768px) {
+            header {
+                padding: 2em 1em;
+            }
+
+            header h1 {
+                font-size: 2rem;
+            }
+
+            main {
+                padding: 3em 1.5em;
+            }
+
+            section {
+                padding: 1.5em;
+            }
+
+            h2 {
+                font-size: 1.6rem;
+            }
+
+            h3 {
+                font-size: 1.2rem;
+            }
+
+            p {
+                font-size: 1rem;
+            }
+
+            a.button-link {
+                font-size: 1rem;
+                padding: 8px 16px;
+            }
         }
     </style>
 </head>
+
 <body>
+
     <header>
         <h1>Business Case Studies - Shyamora</h1>
+        <p>Shyamora is on a path to becoming a model city in sustainable development. Here are some of our key focus areas and potential growth opportunities.</p>
     </header>
+
     <main>
+
+        <!-- Agriculture Section -->
         <section>
             <h2>1. Agriculture</h2>
-            <p>
-                shymora is a city which lies in the banks of the himalayas next to dehradun.the region 
-                benefits from fertile doon valley  soil and abundance of water rersorces.so here we can 
-                focus on crops like basmati rice,wheat,and seasonal fruits.the cultivable land consist of both
-                flat land and land in mountains basically terrace farming.considering the potential growth 
-                we are thinking of implementing following things.</p>
+            <p>Shyamora is located in the fertile Doon Valley, benefiting from the abundance of water and rich soil. Our focus is on sustainable agricultural practices, which will foster the growth of high-value crops like basmati rice, wheat, and seasonal fruits. We also aim to implement modern farming techniques, including technology-driven soil analysis and weather forecasting.</p>
             <h3>Potential Growth:</h3>
             <ul>
-                <li>Sustainable farming: going green,going for organic farming to reduce environmental degradation.</li>
-                <li>Technology integration: using technology to predict weather,quality of soil etc.</li>
-                <li>Vertical farming: Efficient land use in urban areas.</li>
-                <li>Agriculture hubs: Processing, packaging, and exporting produce.</li>
+                <li>Sustainable farming and organic agriculture to reduce environmental impact.</li>
+                <li>Technology integration for soil and weather prediction.</li>
+                <li>Vertical farming for better land utilization in urban areas.</li>
+                <li>Establishment of agriculture hubs for processing, packaging, and exporting.</li>
             </ul>
-            <h3>SDG Goals:</h3>
-            <ul>
-                <li><strong>Target 2.1:</strong>  By 2030, end hunger and ensure all people, particularly the poor and 
-                    vulnerable, have access to safe, nutritious, and sufficient food year-round.</li>
-                <li><strong>Target 2.3:</strong>By 2030, double the agricultural productivity and incomes of small-scale food producers, 
-                    especially women, indigenous people, family farmers, and fishers.
-                     </li>
-                <li><strong>Target 2.4:</strong>Ensure sustainable food production systems and resilient agricultural practices that increase productivity 
-                    while adapting to climate change and disasters..</li>
-                <li><strong>Target 12.3:</strong>By 2030, halve per capita global food waste at the retail and consumer levels and reduce food losses along production and supply chains.
-                    .</li>
-            </ul>
+            <a href="agriculturecases.html" target="_blank" class="button-link"> Agriculture</a>
         </section>
-        
+
+        <!-- Industrial Area Development Section -->
         <section>
             <h2>2. Industrial Area Development</h2>
-            <p>the industrial area of shymaora primarily constitute of IT,pharmaceuticals,and educated related 
-                sectors we also had a dam where we have placed solar panels.currently we need to tackle with the pollution.so considering the potential growth
-                </p>
+            <p>Shyamora's industrial growth is fueled by IT, pharmaceuticals, and education sectors, with a focus on green energy initiatives like solar panel installations. However, we must address the challenges of pollution. We propose several strategies to enhance eco-friendly development while fostering job creation.</p>
             <h3>Potential Growth:</h3>
             <ul>
-                <li>Green industrial zones: promoting going green,we want to develop eco friendly industrial hubs 
-                    focusing on renewable energy ,clean manufacutring.</li>
-                <li>Agro-processing industries:we want to promote local industries as much as possible.promoting business like achar making or may b 
-                    it is pahadi namak and all etc </li>
-                <li>Skill development centres: Establish training hubs for youth in IT, renewable energy, and biotech sectors, 
-                    leveraging proximity to shyamora's educational institutions.</li>
-                <li>Cottage and handicraft industries: Preserve cultural heritage through traditional crafts and handlooms.</li>
+                <li>Develop green industrial zones with renewable energy and clean manufacturing practices.</li>
+                <li>Promote agro-processing industries and local businesses like handicrafts.</li>
+                <li>Establish skill development centers for youth in IT, renewable energy, and biotech sectors.</li>
+                <li>Encourage cottage and handicraft industries to preserve local cultural heritage.</li>
             </ul>
-            <h3>SDG Goals:</h3>
+            <p>Goals:</p>
             <ul>
-                <li><strong>Target 8.2:</strong>  Achieve higher levels of economic productivity through diversification, 
-                    technological upgrading, and innovation.</li>
-                <li><strong>Target 8.4:</strong> Improve global resource efficiency in consumption and production and decouple 
-                    economic growth from environmental degradation</li>
-                <li><strong>Target 9.4:</strong> Enhance scientific research and upgrade the technological capabilities of industrial sectors..</li>
+                <li>Create an industrial park by 2030 with 100% eco-friendly practices.</li>
+                <li>Generate 50,000 new jobs in manufacturing, logistics, and IT sectors.</li>
+                <li>Establish export-focused units for handicrafts and sustainable products.</li>
             </ul>
-
-            <p>1. Create an industrial park with 100% eco-friendly practices by 2030.
-                2.Generate 50,000 new jobs in manufacturing, logistics, and IT sectors.
-                3.  Establish export-focused units for handicrafts and sustainable products.
-                </p>
+            <a href="industrialarea.html" target="_blank" class="button-link"> Industrial Area</a>
         </section>
 
+        <!-- Water Supply Network Section -->
         <section>
             <h2>3. Water Supply Network</h2>
-            <p>shyamora is a city which lies on the banks of the river yamuna ,so the entire city is dependent
-                on it.as the urbanisation is continiously increasing its very important to have proper water
-                managment for that we are introducing smart water management,promoting rainwater harvesting  and creating
-                areas for groundwater recharge.we also want to ensure that each house hold ,each farmer,each industrial
-                area recieves the water evenly.
-                </p>
-           
-            <h3>SDG Goals:</h3>
-            <ul>
-                <li><strong>Target 6.1:</strong> Universal access to safe drinking water by 2030.</li>
-                <li><strong>Target 6.4:</strong> By 2030, substantially increase water-use efficiency across all sectors and ensure sustainable freshwater supplies.</li>
-                <li><strong>Target 6.6:</strong>  Protect and restore water-related ecosystems, including rivers, lakes, and aquifers..</li>
-            </ul>
+            <p>Shyamora, situated on the banks of the Yamuna River, depends on its water resources. With increasing urbanization, efficient water management is critical. We aim to implement smart water systems, promote rainwater harvesting, and create groundwater recharge areas to ensure equitable water distribution across households, farms, and industries.</p>
+            <a href="waternetwork.html" target="_blank" class="button-link"> Water Supply network</a>
         </section>
 
-        <section>
-            <h2>4. Risk Prediction and Management</h2>
-            <p>Located in a seismically active region, Shyamora faces risks of earthquakes, floods, and landslides. Proactive measures are being taken to mitigate these risks.</p>
-            <h3>Potential Growth:</h3>
-            <ul>
-                <li>AI-powered risk models: Early warning systems using geospatial data.</li>
-                <li>Emergency infrastructure: Shelters, hospitals, and supply storage in disaster-prone areas.</li>
-                <li>Community preparedness: Regular disaster management drills for residents.</li>
-            </ul>
-            <h3>SDG Goals:</h3>
-            <ul>
-                <li><strong>Target 11.5:</strong>Significantly reduce the number of people affected by disasters, focusing on economic and environmental impacts.</li>
-                <li><strong>Target 13.1:</strong> Strengthen resilience and adaptive capacity to climate-related hazards.
-                </li>
-            </ul>
-            <p>1.Train 70% of the population in disaster risk management by 2028
-                2.Develop a real-time disaster prediction system using AI by 2030.
-                3.Strengthen 100% of critical infrastructure (hospitals, schools, etc.) to withstand natural disasters.</p>
-        </section>
     </main>
+
     <footer>
-        <p>Shyamora - Building a Sustainable Future</p>
+        <p>&copy; 2024 Shyamora. All rights reserved. | Building a Sustainable Future</p>
     </footer>
+
 </body>
+
 </html>
