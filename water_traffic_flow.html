@@ -1,16 +1,49 @@
-#include <iostream>
-#include <queue>
-#include <vector>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>C++ Level Order Traversal for Water Pipeline Network</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            padding: 20px;
+        }
+        pre {
+            background-color: #2d2d2d;
+            color: #f8f8f2;
+            padding: 15px;
+            border-radius: 5px;
+            overflow: auto;
+        }
+        code {
+            font-family: monospace;
+            display: block;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>C++ Level Order Traversal for Water Pipeline Network</h1>
+
+    <pre><code>
+#include &lt;iostream&gt;
+#include &lt;queue&gt;
+#include &lt;vector&gt;
 
 using namespace std;
-
 
 struct Node {
     string name;
     int flowCapacity;
-    vector<Node*> neighbors;  // List of neighboring nodes (connected by pipelines)
+    vector&lt;Node*&gt; neighbors;  // List of neighboring nodes (connected by pipelines)
 };
-
 
 void levelOrderTraversal(Node* root) {
     if (root == nullptr) {
@@ -18,39 +51,40 @@ void levelOrderTraversal(Node* root) {
     }
 
     // Queue to manage the level order traversal
-    queue<Node*> q;
+    queue&lt;Node*&gt; q;
     q.push(root);
 
     while (!q.empty()) {
         Node* current = q.front();
         q.pop();
         
-        cout << "Node: " << current->name << " | Flow Capacity: " << current->flowCapacity << endl;
+        cout &lt;&lt; "Node: " &lt;&lt; current-&gt;name &lt;&lt; " | Flow Capacity: " &lt;&lt; current-&gt;flowCapacity &lt;&lt; endl;
 
         // Add neighbors to the queue for the next level
-        for (Node* neighbor : current->neighbors) {
+        for (Node* neighbor : current-&gt;neighbors) {
             q.push(neighbor);
         }
     }
 }
 
 int main() {
-   
     Node* dam = new Node{"Dam", 100};  // Dam has 100 units of water flow capacity
     Node* reservoir1 = new Node{"Reservoir1", 50};
     Node* reservoir2 = new Node{"Reservoir2", 60};
     Node* industrial1 = new Node{"Industrial1", 40};
     Node* farmland1 = new Node{"Farmland1", 30};
 
-    
-    dam->neighbors.push_back(reservoir1);
-    dam->neighbors.push_back(reservoir2);
-    reservoir1->neighbors.push_back(industrial1);
-    reservoir2->neighbors.push_back(farmland1);
+    dam-&gt;neighbors.push_back(reservoir1);
+    dam-&gt;neighbors.push_back(reservoir2);
+    reservoir1-&gt;neighbors.push_back(industrial1);
+    reservoir2-&gt;neighbors.push_back(farmland1);
 
-   
-    cout << "Level Order Traversal of Water Pipeline Network:" << endl;
+    cout &lt;&lt; "Level Order Traversal of Water Pipeline Network:" &lt;&lt; endl;
     levelOrderTraversal(dam);
 
     return 0;
 }
+    </code></pre>
+
+</body>
+</html>
