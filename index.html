@@ -1,48 +1,135 @@
-<!DOCTYPE html>
-<html lang="en">
+/* Basic Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-</head>
+/* Body and Font */
+body {
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.6;
+    background-color: #f4f4f9;
+    color: #333;
+    padding: 20px;
+}
 
-<body>
-    <header>
-        <h1>Hello, I'm Priyanshu Khatri👋</h1>
-        <p>I am currently pursuing my BE in Computer Science Engineering from KLE Tech University, Hubli. I am passionate about technology and problem-solving. Here's a glimpse of my work:</p>
-    </header>
+h1, h2 {
+    color: #333;
+}
 
-    <section>
-        <h2>🛠️ PROJECTS</h2>
-        <ul>
-            <li><strong>SCRIBE AWARENESS FOR VISUALLY IMPAIRED INDIVIDUAL</strong>
-                <p>To solve the problem of the lack of availability of scribes, we created a website where visually impaired individuals can connect with available scribes in their area. We also spread awareness through the platform.</p>
-            </li>
-            <li><strong>CIRCULAR SYMPHONY</strong>
-                <p>During our exploration course, we worked on the theme of kinetic sculptures. Taking inspiration from David C. Roy's works, we created a kinetic sculpture consisting of two designed wheels connected via Bluetooth, showcasing different designs and patterns.</p>
-            </li>
-        </ul>
+/* Header Section */
+header {
+    background-color: #4CAF50;
+    color: #fff;
+    text-align: center;
+    padding: 40px 20px;
+    border-radius: 8px;
+    margin-bottom: 30px;
+}
 
-        <h2>🚀 Skills</h2>
-        <ul>
-            <li>C++, Python, JavaScript</li>
-            <li>Data Structures and Algorithms</li>
-            <li>Web Development (React.js, Node.js)</li>
-        </ul>
+header h1 {
+    font-size: 2.5rem;
+}
 
-        <h2>🌐 Find Me Online</h2>
-        <ul>
-            <li><a href="https://github.com/your-github-username" target="_blank">GitHub</a></li>
-            <li><a href="https://linkedin.com/in/your-linkedin-profile" target="_blank">LinkedIn</a></li>
-            <li><a href="buisnesscase_shyammora.html" target="_blank">Shyammora Profile</a></li>
-            <li><a href="introduction_daa.html" target="_blank">Introduction DAA</a></li>
-        </ul>
+header p {
+    font-size: 1.2rem;
+}
 
-        <blockquote>“The only way to do great work is to love what you do.” – Steve Jobs</blockquote>
-    </section>
-</body>
+/* Section Style */
+section {
+    max-width: 900px;
+    margin: 0 auto;
+}
 
-</html>
+/* Project Section */
+h2 {
+    font-size: 2rem;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+ul {
+    list-style-type: none;
+    margin-left: 0;
+}
+
+li {
+    margin-bottom: 20px;
+    padding: 15px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+strong {
+    display: block;
+    font-size: 1.2rem;
+    margin-bottom: 5px;
+}
+
+p {
+    font-size: 1rem;
+    color: #555;
+}
+
+/* Skills Section */
+ul li {
+    background-color: #fafafa;
+    border: 1px solid #eee;
+}
+
+h2 + ul {
+    padding-left: 20px;
+}
+
+/* Find Me Online Section */
+ul li a {
+    color: #4CAF50;
+    text-decoration: none;
+    font-size: 1.1rem;
+    transition: color 0.3s ease;
+}
+
+ul li a:hover {
+    color: #333;
+}
+
+/* Blockquote */
+blockquote {
+    font-style: italic;
+    font-size: 1.5rem;
+    color: #555;
+    border-left: 5px solid #4CAF50;
+    padding-left: 20px;
+    margin-top: 30px;
+    text-align: center;
+}
+
+/* Add some spacing and make the layout mobile responsive */
+@media screen and (max-width: 768px) {
+    header {
+        padding: 20px 10px;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    h2 {
+        font-size: 1.6rem;
+    }
+
+    p {
+        font-size: 1rem;
+    }
+
+    ul li {
+        padding: 12px;
+    }
+
+    blockquote {
+        font-size: 1.2rem;
+    }
+}
+
