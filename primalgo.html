@@ -1,66 +1,89 @@
-#include <iostream>
-#include <vector>
-#include <climits>
-#include <queue>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>C++ Prim's Algorithm for Water Distribution Network</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            padding: 20px;
+        }
+        pre {
+            background-color: #2d2d2d;
+            color: #f8f8f2;
+            padding: 15px;
+            border-radius: 5px;
+            overflow: auto;
+        }
+        code {
+            font-family: monospace;
+            display: block;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>C++ Prim's Algorithm for Water Distribution Network</h1>
+
+    <pre><code>
+#include &lt;iostream&gt;
+#include &lt;vector&gt;
+#include &lt;climits&gt;
+#include &lt;queue&gt;
 
 using namespace std;
 
 #define MAX 100
 #define INF INT_MAX
 
-// Graph structure
 class Graph {
 public:
     int V;  // Number of vertices (areas)
-    vector<pair<int, int>> adj[MAX];  // adjacency list: (node, cost)
+    vector&lt;pair&lt;int, int&gt;&gt; adj[MAX];  // adjacency list: (node, cost)
 
     Graph(int V) {
-        this->V = V;
+        this-&gt;V = V;
     }
 
-    // Add an edge (u, v) with a specific cost
+    // Add edge to the graph
     void addEdge(int u, int v, int cost) {
         adj[u].push_back(make_pair(v, cost));
         adj[v].push_back(make_pair(u, cost));  // because the graph is undirected
     }
 
-    // Function to implement Prim's algorithm to find the MST
+    // Perform Prim's MST Algorithm
     void primMST() {
-        // To store the minimum cost edge to each node (initialized to INF)
-        vector<int> key(V, INF);
+        vector&lt;int&gt; key(V, INF);
+        vector&lt;int&gt; parent(V, -1);
+        vector&lt;bool&gt; inMST(V, false);
         
-        // To store parent of each node to construct the MST
-        vector<int> parent(V, -1);
+        priority_queue&lt;pair&lt;int, int&gt;, vector&lt;pair&lt;int, int&gt;&gt;, greater&lt;pair&lt;int, int&gt;&gt;&gt; pq;
         
-        // To check whether a node is included in the MST or not
-        vector<bool> inMST(V, false);
-        
-        // Min-Heap to store the node with the minimum key value
-        priority_queue<pair<int, int>, vector<pair<int, int>>, greater<pair<int, int>>> pq;
-        
-        // Start with the first node (0th node)
         key[0] = 0;
         pq.push(make_pair(0, 0));  // (key value, node)
 
-        // Run the loop until all vertices are included in the MST
         while (!pq.empty()) {
             int u = pq.top().second;  // node with minimum key
             pq.pop();
 
-            // If this node is already included in MST, skip it
             if (inMST[u]) continue;
-            
-            // Include the current node in MST
+
             inMST[u] = true;
 
-            // Process all the neighbors of the current node
             for (auto edge : adj[u]) {
                 int v = edge.first;   // Neighbor node
                 int weight = edge.second;  // Cost to reach this node
 
                 // If the neighbor node is not yet included in MST and 
                 // the cost to reach it is smaller than the current key, update it
-                if (!inMST[v] && key[v] > weight) {
+                if (!inMST[v] && key[v] &gt; weight) {
                     key[v] = weight;
                     parent[v] = u;
                     pq.push(make_pair(key[v], v));
@@ -72,18 +95,18 @@ public:
         printMST(parent);
     }
 
-    // Function to print the MST (minimum spanning tree)
-    void printMST(vector<int>& parent) {
+    // Print the edges of the MST
+    void printMST(vector&lt;int&gt;& parent) {
         int totalCost = 0;
-        cout << "Edge\tWeight\n";
-        for (int i = 1; i < V; i++) {
-            cout << parent[i] << " - " << i << "\t" << getWeight(parent[i], i) << endl;
+        cout &lt;&lt; "Edge\tWeight\n";
+        for (int i = 1; i &lt; V; i++) {
+            cout &lt;&lt; parent[i] &lt;&lt; " - " &lt;&lt; i &lt;&lt; "\t" &lt;&lt; getWeight(parent[i], i) &lt;&lt; endl;
             totalCost += getWeight(parent[i], i);
         }
-        cout << "\nTotal Cost of Water Distribution Network: " << totalCost << endl;
+        cout &lt;&lt; "\nTotal Cost of Water Distribution Network: " &lt;&lt; totalCost &lt;&lt; endl;
     }
 
-    // Helper function to get the weight of an edge between u and v
+    // Get the weight (cost) of the edge between nodes u and v
     int getWeight(int u, int v) {
         for (auto edge : adj[u]) {
             if (edge.first == v) {
@@ -95,23 +118,4 @@ public:
 };
 
 int main() {
-    // Number of nodes in the graph (e.g., number of areas in Shyamora)
-    int V = 5;  // Example with 5 nodes (change as needed)
-
-    // Create a graph with V vertices
-    Graph g(V);
-
-    // Adding edges (u, v, cost)
-    g.addEdge(0, 1, 2);
-    g.addEdge(0, 3, 6);
-    g.addEdge(1, 2, 3);
-    g.addEdge(1, 3, 8);
-    g.addEdge(2, 3, 5);
-    g.addEdge(2, 4, 7);
-    g.addEdge(3, 4, 9);
-
-    // Run Prim's algorithm to find the MST (minimum spanning tree)
-    g.primMST();
-
-    return 0;
-}
+    int V = 5
