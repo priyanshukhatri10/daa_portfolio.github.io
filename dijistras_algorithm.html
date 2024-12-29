@@ -33,14 +33,14 @@
     <h1>C++ Dijkstra Algorithm</h1>
 
     <pre><code>
-#include &lt;iostream&gt;
-#include &lt;climits&gt; // For INT_MAX
+#include <iostream>
+#include <climits> // For INT_MAX
 using namespace std;
 
 int getMinDistanceVertex(int dist[], bool visited[], int V) {
     int min = INT_MAX, minIndex = -1;
-    for (int i = 0; i &lt; V; i++) {
-        if (!visited[i] && dist[i] &lt; min) {
+    for (int i = 0; i < V; i++) {
+        if (!visited[i] && dist[i] < min) {
             min = dist[i];
             minIndex = i;
         }
@@ -48,44 +48,55 @@ int getMinDistanceVertex(int dist[], bool visited[], int V) {
     return minIndex;
 }
 
-void dijkstra(int graph&lt;&gt;[5], int src, int V) {
+void dijkstra(int graph[10][10], int src, int V) {
     int dist[V]; // Stores shortest distance from source
     bool visited[V] = {false}; // Tracks visited vertices
+
     // Initialize distances to infinity and source distance to 0
-    for (int i = 0; i &lt; V; i++) {
+    for (int i = 0; i < V; i++) {
         dist[i] = INT_MAX;
     }
     dist[src] = 0;
+
     // Iterate to calculate shortest paths
-    for (int i = 0; i &lt; V - 1; i++) {
+    for (int i = 0; i < V - 1; i++) {
         int u = getMinDistanceVertex(dist, visited, V);
         // Mark the picked vertex as visited
         visited[u] = true;
+
         // Update distances for neighbors (adjacent vertices)
-        for (int v = 0; v &lt; V; v++) {
-            if (!visited[v] && graph[u][v] &amp;&amp; dist[u] != INT_MAX
-                &amp;&amp; dist[u] + graph[u][v] &lt; dist[v]) {
+        for (int v = 0; v < V; v++) {
+            if (!visited[v] && graph[u][v] && dist[u] != INT_MAX
+                && dist[u] + graph[u][v] < dist[v]) {
                 dist[v] = dist[u] + graph[u][v];
             }
         }
     }
-    cout &lt;&lt; "Vertex\t\tDistance from Source\n";
-    for (int i = 0; i &lt; V; i++) {
-        cout &lt;&lt; i &lt;&lt; "\t\t" &lt;&lt; dist[i] &lt;&lt; endl;
+
+    cout << "Vertex\t\tDistance from Source\n";
+    for (int i = 0; i < V; i++) {
+        cout << i << "\t\t" << dist[i] << endl;
     }
 }
 
 int main() {
-    int graph[5][5] = {
-        {0, 2, 0, 6, 0},
-        {2, 0, 3, 0, 5},
-        {0, 3, 0, 0, 7},
-        {6, 0, 0, 0, 8},
-        {0, 5, 7, 8, 0}
+    int graph[10][10] = {
+        {0, 12, 0, 0, 0, 9, 0, 0, 0, 0}, // R1
+        {10, 0, 0, 9, 7, 0, 0, 0, 0, 0}, // R3
+        {0, 6, 0, 6, 4, 0, 0, 0, 0, 0},  // T
+        {0, 9, 3, 0, 8, 0, 0, 0, 0, 9},  // T6
+        {0, 4, 7, 8, 0, 0, 0, 0, 0, 5},  // F1
+        {9, 0, 0, 0, 0, 0, 15, 0, 0, 0}, // D
+        {0, 0, 0, 0, 0, 15, 0, 14, 0, 12}, // P3
+        {0, 0, 0, 0, 0, 0, 14, 0, 3, 3},  // F2
+        {0, 0, 0, 0, 0, 0, 0, 3, 0, 2},   // F4
+        {0, 0, 0, 12, 8, 0, 12, 8, 2, 0}  // T2
     };
-    dijkstra(graph, 0, 5);
+
+    dijkstra(graph, 0, 10); // Source: R1 (index 0)
     return 0;
 }
+
     </code></pre>
 
 </body>
