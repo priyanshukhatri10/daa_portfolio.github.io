@@ -1,4 +1,39 @@
-#include <iostream>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>C++ QuickSort with Soil Quality</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            padding: 20px;
+        }
+        pre {
+            background-color: #2d2d2d;
+            color: #f8f8f2;
+            padding: 15px;
+            border-radius: 5px;
+            overflow: auto;
+        }
+        code {
+            font-family: monospace;
+            display: block;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>C++ QuickSort with Soil Quality</h1>
+
+    <pre><code>
+#include &lt;iostream&gt;
 using namespace std;
 
 struct Area {
@@ -6,21 +41,19 @@ struct Area {
     float soil_quality;
 };
 
-// Function to swap two elements in the array
 void swap(Area &a, Area &b) {
     Area temp = a;
     a = b;
     b = temp;
 }
 
-// Partition function used by Quick Sort
 int Partition(Area A[], int l, int r) {
     float p = A[l].soil_quality;  
     int i = l;
     int j = r + 1;
 
     while (true) {
-        // Find an element greater than or equal to pivot (p)
+      
         do {
             i++;
         } while (A[i].soil_quality < p && i <= r);
@@ -34,36 +67,30 @@ int Partition(Area A[], int l, int r) {
             break;  
         }
         
-        // Swap the elements at i and j
+        // Swap A[i] and A[j]
         swap(A[i], A[j]);
     }
 
-    // Swap the pivot with the element at j to complete the partition
+    // Swap pivot element with A[j]
     swap(A[l], A[j]);
     return j;  
 }
 
-// Quick Sort function
 void QuickSort(Area A[], int l, int r) {
     if (l < r) {
-        // Get the partition index
         int s = Partition(A, l, r);
-
-        // Recursively sort the left and right subarrays
         QuickSort(A, l, s - 1);
         QuickSort(A, s + 1, r);
     }
 }
 
-// Function to display the array of areas with soil quality
 void DisplayAreas(Area A[], int n) {
     for (int i = 0; i < n; i++) {
-        cout << A[i].name << ": " << A[i].soil_quality << endl;
+        cout &lt;&lt; A[i].name &lt;&lt; ": " &lt;&lt; A[i].soil_quality &lt;&lt; endl;
     }
 }
 
 int main() {
-    
     Area areas[] = {
         {"Area A", 6.5},
         {"Area B", 5.2},
@@ -74,14 +101,17 @@ int main() {
 
     int n = sizeof(areas) / sizeof(areas[0]);
 
-    cout << "Before Sorting:" << endl;
+    cout &lt;&lt; "Before Sorting:" &lt;&lt; endl;
     DisplayAreas(areas, n);  
 
-    // Apply Quick Sort on the areas based on soil quality
     QuickSort(areas, 0, n - 1);
 
-    cout << "\nAfter Sorting:" << endl;
+    cout &lt;&lt; "\nAfter Sorting:" &lt;&lt; endl;
     DisplayAreas(areas, n);  
 
     return 0;
 }
+    </code></pre>
+
+</body>
+</html>
