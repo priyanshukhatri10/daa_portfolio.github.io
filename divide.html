@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>C++ Code - Industrial Development</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        pre {
+            background-color: #272822;
+            color: #f8f8f2;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>C++ Code for Industrial Development in Shyamora</h1>
+    <p>This is the C++ code that implements the Divide and Conquer approach for industrial development in Shyamora.</p>
+    
+    <pre>
+#include &lt;iostream&gt;
+#include &lt;vector&gt;
+#include &lt;string&gt;
+using namespace std;
+
+
+struct Zone {
+    string name;
+    string type;
+    int area; 
+    bool infrastructureComplete;
+    bool resourcesAllocated;
+    
+    Zone(string n, string t, int a, bool infrastructure, bool resources)
+        : name(n), type(t), area(a), infrastructureComplete(infrastructure), resourcesAllocated(resources) {}
+};
+
+
+Zone getZoneInfo() {
+    string name, type;
+    int area;
+    char infrastructureComplete, resourcesAllocated;
+    
+    /
+    cout &lt;&lt; "Enter Zone Name: ";
+    getline(cin, name);
+    cout &lt;&lt; "Enter Zone Type (e.g., Heavy Industry, Light Industry, Commercial): ";
+    getline(cin, type);
+    cout &lt;&lt; "Enter Zone Area (in square kilometers): ";
+    cin &gt;&gt; area;
+    cin.ignore();  
+    cout &lt;&lt; "Is infrastructure complete? (y/n): ";
+    cin &gt;&gt; infrastructureComplete;
+    cout &lt;&lt; "Are resources allocated? (y/n): ";
+    cin &gt;&gt; resourcesAllocated;
+    cin.ignore(); 
+    
+  
+    bool infrastructure = (infrastructureComplete == 'y' || infrastructureComplete == 'Y');
+    bool resources = (resourcesAllocated == 'y' || resourcesAllocated == 'Y');
+    
+   
+    return Zone(name, type, area, infrastructure, resources);
+}
+
+
+void developZone(Zone &zone) {
+  
+    if (!zone.infrastructureComplete) {
+        zone.infrastructureComplete = true;
+        cout &lt;&lt; zone.name &lt;&lt; " Infrastructure is completed." &lt;&lt; endl;
+    }
+    
+ 
+    if (!zone.resourcesAllocated) {
+        zone.resourcesAllocated = true;
+        cout &lt;&lt; zone.name &lt;&lt; " Resources have been allocated." &lt;&lt; endl;
+    }
+}
+
+
+void developIndustrialArea(vector&lt;Zone&gt; &amp;zones) {
+   
+    for (auto &zone : zones) {
+        cout &lt;&lt; "\nDeveloping " &lt;&lt; zone.name &lt;&lt; " (" &lt;&lt; zone.type &lt;&lt; ") with area: " &lt;&lt; zone.area &lt;&lt; " km²" &lt;&lt; endl;
+        developZone(zone); // Conquer each zone
+    }
+}
+
+
+void printDevelopmentStatus(const vector&lt;Zone&gt; &amp;zones) {
+    cout &lt;&lt; "\nFinal Development Status:\n";
+    for (const auto &zone : zones) {
+        cout &lt;&lt; "Zone: " &lt;&lt; zone.name &lt;&lt; "\nType: " &lt;&lt; zone.type
+             &lt;&lt; "\nArea: " &lt;&lt; zone.area &lt;&lt; " km²"
+             &lt;&lt; "\nInfrastructure Completed: " &lt;&lt; (zone.infrastructureComplete ? "Yes" : "No")
+             &lt;&lt; "\nResources Allocated: " &lt;&lt; (zone.resourcesAllocated ? "Yes" : "No") &lt;&lt; endl;
+    }
+}
+
+int main() {
+    int numZones;
+    
+   
+    cout &lt;&lt; "Enter the number of zones to develop: ";
+    cin &gt;&gt; numZones;
+    cin.ignore(); 
+
+    vector&lt;Zone&gt; industrialZones;
+
+    
+    for (int i = 0; i &lt; numZones; ++i) {
+        cout &lt;&lt; "\nEnter details for Zone " &lt;&lt; (i + 1) &lt;&lt; ":\n";
+        industrialZones.push_back(getZoneInfo());
+    }
+
+   
+    developIndustrialArea(industrialZones);
+
+   
+    printDevelopmentStatus(industrialZones);
+
+    return 0;
+}
+    </pre>
+
+</body>
+</html>
