@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>C++ Code - Heap Sort Delivery Schedule</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        pre {
+            background-color: #272822;
+            color: #f8f8f2;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>C++ Code for Heap Sort on Delivery Schedule</h1>
+    <p>This is the C++ code that uses the Heap Sort algorithm to sort a delivery schedule by urgency or distance.</p>
+    
+    <pre>
+#include &lt;iostream&gt;
+#include &lt;vector&gt;
+using namespace std;
+
+void heapify(vector&lt;pair&lt;int, string&gt;&gt; &amp;arr, int n, int i) {
+    int largest = i;
+    int left = 2 * i + 1;
+    int right = 2 * i + 2;
+
+    if (left &lt; n &amp;&amp; arr[left].first &gt; arr[largest].first)
+        largest = left;
+
+    if (right &lt; n &amp;&amp; arr[right].first &gt; arr[largest].first)
+        largest = right;
+
+    if (largest != i) {
+        swap(arr[i], arr[largest]);
+        heapify(arr, n, largest);
+    }
+}
+
+void heapSort(vector&lt;pair&lt;int, string&gt;&gt; &amp;arr) {
+    int n = arr.size();
+
+    for (int i = n / 2 - 1; i &gt;= 0; i--)
+        heapify(arr, n, i);
+
+    for (int i = n - 1; i &gt; 0; i--) {
+        swap(arr[0], arr[i]);
+        heapify(arr, i, 0);
+    }
+}
+
+void printSchedule(const vector&lt;pair&lt;int, string&gt;&gt; &amp;arr) {
+    cout &lt;&lt; "Sorted Delivery Schedule (by urgency/distance):" &lt;&lt; endl;
+    for (const auto &amp;entry : arr) {
+        cout &lt;&lt; "Urgency/Distance: " &lt;&lt; entry.first &lt;&lt; ", Delivery: " &lt;&lt; entry.second &lt;&lt; endl;
+    }
+}
+
+int main() {
+    vector&lt;pair&lt;int, string&gt;&gt; deliverySchedule = {
+        {5, "Package A"}, {3, "Package B"}, {8, "Package C"},
+        {6, "Package D"}, {2, "Package E"}
+    };
+
+    cout &lt;&lt; "Original Delivery Schedule:" &lt;&lt; endl;
+    for (const auto &amp;entry : deliverySchedule) {
+        cout &lt;&lt; "Urgency/Distance: " &lt;&lt; entry.first &lt;&lt; ", Delivery: " &lt;&lt; entry.second &lt;&lt; endl;
+    }
+
+    heapSort(deliverySchedule);
+
+    printSchedule(deliverySchedule);
+    return 0;
+}
+    </pre>
+
+</body>
+</html>
